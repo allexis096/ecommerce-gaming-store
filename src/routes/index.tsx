@@ -8,10 +8,11 @@ const AppRoutes: React.FC = () => (
   <App.Navigator
     screenOptions={{
       headerTitle: 'Gaming Store',
-      cardStyle: { backgroundColor: '#18181B' },
+      headerTitleStyle: { fontFamily: 'Roboto-Bold' },
       headerStyle: { backgroundColor: '#18181B' },
       headerTintColor: '#fff',
       headerTitleAlign: 'center',
+      cardStyle: { backgroundColor: '#18181B' },
     }}
     initialRouteName="Dashboard"
   >
