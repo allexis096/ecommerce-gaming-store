@@ -29,10 +29,6 @@
     "prettier"
   ],
   "rules": {
-    "react/jsx-curly-newline": "off",
-    "no-restricted-syntax": "off",
-    "camelcase": "off",
-    "react/prop-types": "off",
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
