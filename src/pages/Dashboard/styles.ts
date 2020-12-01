@@ -1,18 +1,32 @@
+import { FlatList } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
+
+import { GameProduct } from '.';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
+  align-items: center;
 `;
 
 export const Products = styled.View`
-  margin: 0 5px;
+  flex: 1;
+  flex-direction: row;
+`;
+
+export const FlatListProduct = styled(
+  FlatList as new () => FlatList<GameProduct>,
+)`
+  flex: 1;
+  padding: 0 5px;
 `;
 
 export const Card = styled.View`
   background-color: #464648;
-  max-width: 45%;
+  max-width: 48%;
   align-items: center;
   border-radius: 5px;
+  flex: 1;
+  margin: 5px;
 `;
 
 export const CardImage = styled.Image`

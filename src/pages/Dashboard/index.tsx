@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import FloatingCart from '../../components/FloatingCart';
+import api from '../../services/api';
 
 import {
   Container,
@@ -13,28 +15,61 @@ import {
   CardDivide,
   CardPrice,
   CardScore,
+  FlatListProduct,
 } from './styles';
 
+export interface GameProduct {
+  id: string;
+  name: string;
+  price: number;
+  score: number;
+  image: string;
+}
+
 const Dashboard: React.FC = () => {
+  const [products, setProducts] = useState<GameProduct[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await api.get('/itens');
+      setProducts(data);
+    })();
+  }, []);
+
   return (
     <Container>
       <Products>
-        <Card>
-          <CardImage source={require('../../assets/super-mario-odyssey.png')} />
-          <CardName>Super Mario Odyssey</CardName>
-          <CardScore>Nota: 100</CardScore>
-          <CardDivide>
-            <CardPrice>R$197,88</CardPrice>
-            <TouchableOpacity>
-              <FeatherIcon
-                name="plus"
-                color="#fff"
-                size={30}
-                style={{ backgroundColor: '#08AF0A', borderRadius: 5 }}
+        <FlatListProduct
+          data={products}
+          keyExtractor={item => item.id}
+          ListFooterComponent={<View />}
+          ListFooterComponentStyle={{
+            height: 80,
+          }}
+          numColumns={2}
+          renderItem={({ item, index }) => (
+            <Card>
+              <CardImage
+                key={index}
+                source={{ uri: item.image }}
+                style={{ height: 140, width: 100 }}
               />
-            </TouchableOpacity>
-          </CardDivide>
-        </Card>
+              <CardName>{item.name}</CardName>
+              <CardScore>{`Nota: ${item.score}`}</CardScore>
+              <CardDivide>
+                <CardPrice>{item.price}</CardPrice>
+                <TouchableOpacity>
+                  <FeatherIcon
+                    name="plus"
+                    color="#fff"
+                    size={30}
+                    style={{ backgroundColor: '#08AF0A', borderRadius: 5 }}
+                  />
+                </TouchableOpacity>
+              </CardDivide>
+            </Card>
+          )}
+        />
       </Products>
       <FloatingCart />
     </Container>
