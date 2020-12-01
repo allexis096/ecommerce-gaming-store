@@ -4,6 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import FloatingCart from '../../components/FloatingCart';
+import { useStore } from '../../hooks/store';
 import api from '../../services/api';
 
 import {
@@ -27,6 +28,8 @@ export interface GameProduct {
 }
 
 const Dashboard: React.FC = () => {
+  const { addToCart } = useStore();
+
   const [products, setProducts] = useState<GameProduct[]>([]);
 
   useEffect(() => {
@@ -47,10 +50,9 @@ const Dashboard: React.FC = () => {
             height: 80,
           }}
           numColumns={2}
-          renderItem={({ item, index }) => (
+          renderItem={({ item }) => (
             <Card>
               <CardImage
-                key={index}
                 source={{ uri: item.image }}
                 style={{ height: 140, width: 100 }}
               />
@@ -58,7 +60,7 @@ const Dashboard: React.FC = () => {
               <CardScore>{`Nota: ${item.score}`}</CardScore>
               <CardDivide>
                 <CardPrice>{item.price}</CardPrice>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => addToCart(item)}>
                   <FeatherIcon
                     name="plus"
                     color="#fff"
