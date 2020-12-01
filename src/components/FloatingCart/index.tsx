@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { useStore } from '../../hooks/store';
+import formatValue from '../../utils/formatValue';
 
 import {
   Container,
@@ -10,15 +13,37 @@ import {
 } from './styles';
 
 const FloatingCart: React.FC = () => {
+  const { products } = useStore();
+
+  const navigation = useNavigation();
+
+  const totalPrice = useMemo(() => {
+    const total = products.reduce((acc, product) => {
+      const productsSub = product.price * product.quantity;
+
+      return acc + productsSub;
+    }, 0);
+
+    return formatValue(total);
+  }, [products]);
+
+  const totalItens = useMemo(() => {
+    const total = products.reduce((acc, product) => {
+      return acc + product.quantity;
+    }, 0);
+
+    return total;
+  }, [products]);
+
   return (
     <Container>
-      <CartButton>
+      <CartButton onPress={() => navigation.navigate('GameCart')}>
         <FeatherIcon name="shopping-cart" size={24} color="#fff" />
-        <CartButtonText>20 itens</CartButtonText>
+        <CartButtonText>{`${totalItens} itens`}</CartButtonText>
       </CartButton>
 
       <CartPricing>
-        <CartTotalPrice>R$1.200,00</CartTotalPrice>
+        <CartTotalPrice>{totalPrice}</CartTotalPrice>
       </CartPricing>
     </Container>
   );
