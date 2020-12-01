@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+export const Container = styled.SafeAreaView`
+  flex: 1;
+`;
+
 export const Products = styled.View`
   margin: 0 5px;
 `;
@@ -24,7 +28,7 @@ export const CardName = styled.Text`
 `;
 
 export const CardScore = styled.Text`
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Bold';
   color: #fff;
   background-color: #0e0e10;
   padding: 5px;
@@ -38,7 +42,7 @@ export const CardDivide = styled.View`
 `;
 
 export const CardPrice = styled.Text`
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Bold';
   color: #fff;
   font-size: 20px;
   margin-right: 20px;

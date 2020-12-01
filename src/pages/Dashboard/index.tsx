@@ -1,9 +1,11 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
+import FloatingCart from '../../components/FloatingCart';
+
 import {
+  Container,
   Products,
   Card,
   CardImage,
@@ -15,7 +17,7 @@ import {
 
 const Dashboard: React.FC = () => {
   return (
-    <SafeAreaView>
+    <Container>
       <Products>
         <Card>
           <CardImage source={require('../../assets/super-mario-odyssey.png')} />
@@ -34,7 +36,8 @@ const Dashboard: React.FC = () => {
           </CardDivide>
         </Card>
       </Products>
-    </SafeAreaView>
+      <FloatingCart />
+    </Container>
   );
 };
 
