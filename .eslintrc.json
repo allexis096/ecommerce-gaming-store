@@ -29,6 +29,7 @@
     "prettier"
   ],
   "rules": {
+    "react/prop-types": "off",
     "global-require":"off",
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
