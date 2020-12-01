@@ -1,3 +1,4 @@
+import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 
 const formatValue = (value: number): string =>
