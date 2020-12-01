@@ -5,63 +5,63 @@
       "name": "Super Mario Odyssey",
       "price": 197.88,
       "score": 100,
-      "image": "super-mario-odyssey.png"
+      "image": "https://images-na.ssl-images-amazon.com/images/I/518mL2i0riL._AC_.jpg"
     },
     {
       "id": 201,
       "name": "Call Of Duty Infinite Warfare",
       "price": 49.99,
       "score": 80,
-      "image": "call-of-duty-infinite-warfare.png"
+      "image": "https://images-americanas.b2w.io/produtos/01/00/item/129427/9/129427953_1GG.png"
     },
     {
       "id": 102,
       "name": "The Witcher III Wild Hunt",
       "price": 119.5,
       "score": 250,
-      "image": "the-witcher-iii-wild-hunt.png"
+      "image": "https://cdn.awsli.com.br/600x450/1202/1202562/produto/48982565/8457bad654.jpg"
     },
     {
       "id": 99,
       "name": "Call Of Duty WWII",
       "price": 249.99,
       "score": 205,
-      "image": "call-of-duty-wwii.png"
+      "image": "https://cdn.awsli.com.br/600x700/1095/1095205/produto/40538480/e887fb1a86.jpg"
     },
     {
       "id": 12,
       "name": "Mortal Kombat XL",
       "price": 69.99,
       "score": 150,
-      "image": "mortal-kombat-xl.png"
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81AOIbFiuXL._AC_SY606_.jpg"
     },
     {
       "id": 74,
       "name": "Shards of Darkness",
       "price": 71.94,
       "score": 400,
-      "image": "shards-of-darkness.png"
+      "image": "https://images-na.ssl-images-amazon.com/images/I/51yeh8hXvEL._AC_.jpg"
     },
     {
       "id": 31,
       "name": "Terra Média: Sombras de Mordor",
       "price": 79.99,
       "score": 50,
-      "image": "terra-media-sombras-de-mordor.png"
+      "image": "https://images-na.ssl-images-amazon.com/images/I/611qSE3ZjpL._AC_SX522_.jpg"
     },
     {
       "id": 420,
       "name": "FIFA 18",
       "price": 195.39,
       "score": 325,
-      "image": "fifa-18.png"
+      "image": "https://lojasaraiva.vteximg.com.br/arquivos/ids/3966788/1004142368.jpg?v=637048670775930000"
     },
     {
       "id": 501,
       "name": "Horizon Zero Dawn",
       "price": 115.8,
       "score": 290,
-      "image": "horizon-zero-dawn.png"
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71XYPOXjcjL._AC_SX342_.jpg"
     }
   ]
 }
