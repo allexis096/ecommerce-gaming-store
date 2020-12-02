@@ -6,6 +6,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import FloatingCart from '../../components/FloatingCart';
 import { useStore } from '../../hooks/store';
 import api from '../../services/api';
+import formatValue from '../../utils/formatValue';
 
 import {
   Container,
@@ -59,7 +60,7 @@ const Dashboard: React.FC = () => {
               <CardName>{item.name}</CardName>
               <CardScore>{`Nota: ${item.score}`}</CardScore>
               <CardDivide>
-                <CardPrice>{item.price}</CardPrice>
+                <CardPrice>{formatValue(item.price)}</CardPrice>
                 <TouchableOpacity onPress={() => addToCart(item)}>
                   <FeatherIcon
                     name="plus"
