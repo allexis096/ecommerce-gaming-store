@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 
 import {
   Container,
@@ -21,6 +21,9 @@ import {
   TotalProductsContainer,
   TotalProductsText,
   SubtotalValue,
+  ContainerTotal,
+  BuyButton,
+  BuyText,
 } from './styles';
 
 import formatValue from '../../utils/formatValue';
@@ -97,9 +100,21 @@ const Cart: React.FC = () => {
           )}
         />
       </ProductContainer>
+
       <TotalProductsContainer>
-        <FeatherIcon name="shopping-cart" color="#fff" size={24} />
-        <TotalProductsText>{`${totalItens} itens`}</TotalProductsText>
+        <ContainerTotal>
+          <FeatherIcon name="shopping-cart" color="#fff" size={24} />
+          <TotalProductsText>{`${totalItens} itens`}</TotalProductsText>
+        </ContainerTotal>
+        <BuyButton
+          onPress={() =>
+            Alert.alert(
+              'Parabéns pela compra!',
+              `Mesmo sem colocar seu cartão de crédito ou dinheiro, você acaba de gastar ${totalPrice} em ${totalItens} jogos!`,
+            )}
+        >
+          <BuyText>Comprar</BuyText>
+        </BuyButton>
         <SubtotalValue>{totalPrice}</SubtotalValue>
       </TotalProductsContainer>
     </Container>

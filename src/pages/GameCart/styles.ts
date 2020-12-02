@@ -95,7 +95,7 @@ export const TotalProductsContainer = styled.View`
   flex-direction: row;
   background: #08af0a;
 
-  padding: 20px 40px;
+  padding: 20px;
   justify-content: space-between;
   align-items: center;
 `;
@@ -113,4 +113,20 @@ export const SubtotalValue = styled.Text`
   font-size: 16px;
   color: #fff;
   font-weight: bold;
+`;
+
+export const BuyText = styled.Text`
+  flex: 1;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+export const ContainerTotal = styled.View`
+  flex-direction: row;
+  flex: 1;
+`;
+
+export const BuyButton = styled.TouchableOpacity`
+  flex: 1;
 `;
