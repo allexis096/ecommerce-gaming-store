@@ -82,9 +82,18 @@ const GameProvider: React.FC = ({ children }) => {
 
   const decGame = useCallback(
     async id => {
+      for (let i = 0; i < products.length; i += 1) {
+        if (products[i].id === id && products[i].quantity <= 1) {
+          products.splice(i, 1);
+        }
+      }
+
       const decProducts = products.map(product =>
         product.id === id
-          ? { ...product, quantity: product.quantity - 1 }
+          ? {
+              ...product,
+              quantity: product.quantity >= 1 ? product.quantity - 1 : 0,
+            }
           : product,
       );
 
