@@ -88,6 +88,11 @@ export const ActionButton = styled.TouchableOpacity`
   margin-bottom: 5px;
 `;
 
+export const Shipping = styled.Text`
+  font-size: 16px;
+  color: #fff;
+`;
+
 export const TotalProductsContainer = styled.View`
   position: absolute;
   bottom: 0px;

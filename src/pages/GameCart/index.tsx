@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import { Alert, View } from 'react-native';
@@ -18,6 +18,7 @@ import {
   ProductQuantity,
   ActionContainer,
   ActionButton,
+  Shipping,
   TotalProductsContainer,
   TotalProductsText,
   SubtotalValue,
@@ -48,8 +49,22 @@ const Cart: React.FC = () => {
       return acc + productsSub;
     }, 0);
 
-    return formatValue(total);
+    return total;
   }, [products]);
+
+  const frete = useMemo(() => {
+    const freteTotal = products.reduce((acc, product) => {
+      const frete10 = product.quantity * 10;
+
+      if (totalPrice + frete10 <= 250) {
+        return acc + frete10;
+      }
+
+      return 0;
+    }, 0);
+
+    return freteTotal;
+  }, [products, totalPrice]);
 
   const totalItens = useMemo(() => {
     const total = products.reduce((acc, product) => {
@@ -59,15 +74,33 @@ const Cart: React.FC = () => {
     return total;
   }, [products]);
 
+  const handleBuy = useCallback(() => {
+    Alert.alert(
+      'Parabéns pela compra!',
+      `Mesmo sem colocar seu cartão de crédito ou dinheiro, você acaba de gastar ${totalPrice} em ${totalItens} jogos!`,
+    );
+  }, [totalItens, totalPrice]);
+
   return (
     <Container>
       <ProductContainer>
         <ProductList
           data={products}
           keyExtractor={item => item.id.toString()}
-          ListFooterComponent={<View />}
+          ListFooterComponent={
+            <View>
+              <Shipping>
+                Frete Grátis para compras acima de R$250,00 e para cada compra,
+                se acrescenta R$10,00.
+              </Shipping>
+              <Shipping style={{ textAlign: 'right', marginRight: 10 }}>
+                Frete atual:
+                {formatValue(frete)}
+              </Shipping>
+            </View>
+          }
           ListFooterComponentStyle={{
-            height: 80,
+            height: 150,
           }}
           renderItem={({ item }: { item: Product }) => (
             <Product>
@@ -106,16 +139,10 @@ const Cart: React.FC = () => {
           <FeatherIcon name="shopping-cart" color="#fff" size={24} />
           <TotalProductsText>{`${totalItens} itens`}</TotalProductsText>
         </ContainerTotal>
-        <BuyButton
-          onPress={() =>
-            Alert.alert(
-              'Parabéns pela compra!',
-              `Mesmo sem colocar seu cartão de crédito ou dinheiro, você acaba de gastar ${totalPrice} em ${totalItens} jogos!`,
-            )}
-        >
+        <BuyButton onPress={() => handleBuy()}>
           <BuyText>Comprar</BuyText>
         </BuyButton>
-        <SubtotalValue>{totalPrice}</SubtotalValue>
+        <SubtotalValue>{formatValue(totalPrice + frete)}</SubtotalValue>
       </TotalProductsContainer>
     </Container>
   );
