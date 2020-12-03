@@ -8,6 +8,24 @@ export const Container = styled.SafeAreaView`
   align-items: center;
 `;
 
+export const OrderText = styled.Text`
+  color: #fff;
+  font-size: 16px;
+`;
+
+export const Order = styled.View`
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-between;
+  margin: 10px;
+`;
+
+export const PriceButton = styled.Button``;
+
+export const ScoreButton = styled.Button``;
+
+export const AlphabeticButton = styled.Button``;
+
 export const Products = styled.View`
   flex: 1;
   flex-direction: row;

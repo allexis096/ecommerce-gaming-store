@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -9,6 +9,11 @@ import api from '../../services/api';
 import formatValue from '../../utils/formatValue';
 
 import {
+  OrderText,
+  Order,
+  PriceButton,
+  ScoreButton,
+  AlphabeticButton,
   Container,
   Products,
   Card,
@@ -40,8 +45,41 @@ const Dashboard: React.FC = () => {
     })();
   }, []);
 
+  const handlePrice = useCallback(async () => {
+    const { data } = await api.get('/itens?_sort=price&_order=asc');
+    setProducts(data);
+  }, []);
+
+  const handleScore = useCallback(async () => {
+    const { data } = await api.get('/itens?_sort=score&_order=desc');
+    setProducts(data);
+  }, []);
+
+  const handleAlphabetic = useCallback(async () => {
+    const { data } = await api.get('/itens?_sort=name&_order=asc');
+    setProducts(data);
+  }, []);
+
   return (
     <Container>
+      <OrderText>Ordenar por:</OrderText>
+      <Order>
+        <PriceButton
+          color="rgba(162, 242, 184, 0.5)"
+          title="Preço"
+          onPress={() => handlePrice()}
+        />
+        <ScoreButton
+          color="rgba(162, 242, 184, 0.5)"
+          title="Popularidade"
+          onPress={() => handleScore()}
+        />
+        <AlphabeticButton
+          color="rgba(162, 242, 184, 0.5)"
+          title="Alfabética"
+          onPress={() => handleAlphabetic()}
+        />
+      </Order>
       <Products>
         <FlatListProduct
           data={products}
