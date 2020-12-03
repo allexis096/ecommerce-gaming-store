@@ -29,6 +29,7 @@
     "prettier"
   ],
   "rules": {
+    "react/jsx-wrap-multilines": "off",
     "react/no-unused-prop-types": "off",
     "react/prop-types": "off",
     "global-require":"off",
